@@ -1,6 +1,6 @@
-const { buildSchema } = require('graphql');
+ const { buildSchema } = require('graphql');
 
-module.exports = buildSchema(`
+ module.exports = buildSchema(`
     type Quote {
         _id: ID!
         quote: String!
@@ -18,6 +18,8 @@ module.exports = buildSchema(`
     }
     type RootMutation {
         createQuote(quoteInput: QuoteInputData): Quote!
+        updateQuote(id: ID!, quoteInput: QuoteInputData): Quote!
+        deleteQuote(id: ID!): Quote!
     }
     schema {
         query: RootQuery
@@ -25,4 +27,4 @@ module.exports = buildSchema(`
     }
 `)
 
-// The exclamation mark signifies that it is required that it be of that type
+ // The exclamation mark signifies that it is required that it be of that type
